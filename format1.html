@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya & Utsav — Wedding Invitation</title>
+
+    <!-- OpenGraph Tags for Rich WhatsApp Link Previews -->
+    <meta property="og:title" content="Shreya & Utsav — 18th January 2027">
+    <meta property="og:description" content="We're tying the knot! Join us at Regenta Orkos Kolkata.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts matching the clean editorial serif + geometric sans style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #f4f1ea;
+            --card-surface: #faf8f4;
+            --text-dark: #2c2a29;
+            --text-muted: #5c5855;
+            --blush-accent: #e5cfd1;
+            --blush-hover: #d8bcc0;
+            --divider-color: #dfd9ce;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e6e2d8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Mobile Frame Container */
+        .invite-wrapper {
+            width: 100%;
+            max-width: 440px;
+            background-color: var(--bg-cream);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            overflow-x: hidden;
+            position: relative;
+            padding-bottom: 48px;
+        }
+
+        /* Typography Helpers */
+        .serif-heading {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+        }
+
+        .section {
+            padding: 36px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--divider-color);
+            margin: 0 auto;
+        }
+
+        /* 1. Hero Image */
+        .hero-image-container {
+            padding: 24px 24px 0 24px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        /* Floral Corner Decorations (Inline SVG) */
+        .floral-left {
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            width: 110px;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+
+        .floral-right {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            width: 110px;
+            opacity: 0.85;
+            pointer-events: none;
+            transform: rotate(180deg);
+        }
+
+        /* Header Title Block */
+        .couple-names {
+            font-size: 2.1rem;
+            line-height: 1.3;
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .wedding-date {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .venue-short {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            max-width: 300px;
+            margin: 0 auto 28px auto;
+        }
+
+        /* Blush RSVP Pill Button */
+        .btn-rsvp {
+            display: inline-block;
+            width: 85%;
+            padding: 14px 24px;
+            background-color: var(--blush-accent);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: background-color 0.25s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-rsvp:hover {
+            background-color: var(--blush-hover);
+            transform: translateY(-1px);
+        }
+
+        /* 2. Venue Section */
+        .section-title {
+            font-size: 1.55rem;
+            margin-bottom: 20px;
+        }
+
+        .venue-name-full {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .venue-address {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        /* Venue Photo Carousel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #ffffff;
+            transform: scale(1.15);
+        }
+
+        /* Embedded Map */
+        .map-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* 3. Story Photo & Text */
+        .story-photo {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 28px;
+        }
+
+        .story-paragraph {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            padding: 0 10px;
+        }
+
+        /* 4. Schedule Section */
+        .schedule-date {
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .schedule-event {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .schedule-location {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        /* Modal for RSVP Confirmation */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: var(--card-surface);
+            width: 100%;
+            max-width: 380px;
+            padding: 28px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid var(--divider-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--divider-color);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="invite-wrapper">
+
+    <!-- Top Couple Photo -->
+    <div class="hero-image-container">
+        <!-- Replace src with your own couple photo -->
+        <img src="./images/pic1.jpg" alt="Shreya & Utsav" class="hero-image">
+    </div>
+
+    <!-- Header Section with Floral Accents -->
+    <div class="section">
+        <!-- Top-Left Watercolor Floral SVG -->
+        <svg class="floral-left" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="40" r="22" fill="#e8b4b8" fill-opacity="0.6"/>
+            <circle cx="52" cy="28" r="16" fill="#f3d1d4" fill-opacity="0.8"/>
+            <circle cx="25" cy="62" r="18" fill="#d99b9f" fill-opacity="0.5"/>
+            <path d="M55 45 C75 40, 85 55, 70 65 C60 70, 50 55, 55 45 Z" fill="#8fa88b" fill-opacity="0.6"/>
+            <path d="M35 65 C45 85, 30 95, 22 80 C18 70, 30 60, 35 65 Z" fill="#769172" fill-opacity="0.55"/>
+        </svg>
+
+        <h1 class="serif-heading couple-names">SHREYA &<br>UTSAV</h1>
+        <p class="wedding-date">MONDAY 18TH JANUARY 2027</p>
+        <p class="venue-short">
+            Regenta Orkos Kolkata by Royal Orchid Hotels Limited, Kolkata, IN
+        </p>
+
+        <button class="btn-rsvp" onclick="openModal()">RSVP</button>
+
+        <!-- Bottom-Right Watercolor Floral SVG -->
+        <svg class="floral-right" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="40" r="22" fill="#e8b4b8" fill-opacity="0.6"/>
+            <circle cx="52" cy="28" r="16" fill="#f3d1d4" fill-opacity="0.8"/>
+            <circle cx="25" cy="62" r="18" fill="#d99b9f" fill-opacity="0.5"/>
+            <path d="M55 45 C75 40, 85 55, 70 65 C60 70, 50 55, 55 45 Z" fill="#8fa88b" fill-opacity="0.6"/>
+            <path d="M35 65 C45 85, 30 95, 22 80 C18 70, 30 60, 35 65 Z" fill="#769172" fill-opacity="0.55"/>
+        </svg>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Venue Section -->
+    <div class="section">
+        <h2 class="serif-heading section-title">OUR VENUE</h2>
+        <p class="venue-name-full">REGENTA ORKOS KOLKATA BY ROYAL ORCHID HOTELS LIMITED</p>
+        <p class="venue-address">621, Prantik Pally (Gitanjali Stadium), Kasba, Kolkata, 700107</p>
+
+        <!-- Swipeable / Clickable Venue Photo Carousel -->
+        <div class="carousel-container" id="venueCarousel">
+            <div class="carousel-track" id="carouselTrack">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Hotel Exterior" class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Hotel Room" class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" alt="Banquet Hall" class="carousel-slide">
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+        <!-- Google Maps Embed -->
+        <div class="map-wrapper">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.5348842605896!2d88.38883737598858!3d22.521577734842183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0276b9148d4239%3A0xe5aebfe30c0cbf99!2sRegenta%20Orkos%20Kolkata!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Our Story Section -->
+    <div class="section">
+        <!-- Silhouette / Heart Hands Photo -->
+        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80" alt="Our Story" class="story-photo">
+
+        <h2 class="serif-heading section-title">OUR STORY</h2>
+        <p class="story-paragraph">
+            We met, we laughed, we fell in love. Somewhere along the way, we realised we didn't want to do life without each other. Now we're tying the knot!
+        </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Schedule Section -->
+    <div class="section">
+        <h2 class="serif-heading section-title">SCHEDULE</h2>
+        <p class="schedule-date">18TH JANUARY 2027</p>
+        <p class="schedule-event">Wedding</p>
+        <p class="schedule-location">
+            Regenta Orkos Kolkata by Royal Orchid<br>Hotels Limited
+        </p>
+
+        <!-- Ring / Closing Photo -->
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Wedding Rings" class="hero-image">
+    </div>
+
+</div>
+
+<!-- Interactive WhatsApp RSVP Modal -->
+<div class="modal-overlay" id="rsvpModal">
+    <div class="modal-box">
+        <h3 class="serif-heading" style="margin-bottom: 8px;">Confirm Attendance</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Send your RSVP directly via WhatsApp</p>
+        <input type="text" id="guestName" class="modal-input" placeholder="Your Full Name">
+        <select id="guestCount" class="modal-input">
+            <option value="1 Guest">Attending: 1 Guest</option>
+            <option value="2 Guests">Attending: 2 Guests</option>
+            <option value="Family (3+ Guests)">Attending: Family (3+ Guests)</option>
+        </select>
+        <div class="modal-actions">
+            <button class="btn-rsvp btn-secondary" onclick="closeModal()">Cancel</button>
+            <button class="btn-rsvp" onclick="sendWhatsAppRSVP()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. Carousel Logic with Touch Swipe Support
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+        currentSlide = index;
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    // Touch swipe detection for mobile
+    let touchStartX = 0;
+    const carousel = document.getElementById('venueCarousel');
+    carousel.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+    carousel.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 40) {
+            goToSlide((currentSlide + 1) % totalSlides);
+        } else if (touchEndX - touchStartX > 40) {
+            goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+        }
+    });
+
+    // 2. RSVP Modal & WhatsApp Redirect
+    function openModal() {
+        document.getElementById('rsvpModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('rsvpModal').style.display = 'none';
+    }
+
+    function sendWhatsAppRSVP() {
+        const name = document.getElementById('guestName').value.trim() || "A Guest";
+        const count = document.getElementById('guestCount').value;
+        
+        // Replace 91XXXXXXXXXX with your actual WhatsApp number (with country code, no +)
+        const yourPhoneNumber = "91XXXXXXXXXX"; 
+        
+        const message = `Hi Shreya & Utsav! This is ${name} (${count}). Excited to celebrate your wedding on 18th January 2027 at Regenta Orkos!`;
+        const whatsappUrl = `https://wa.me/${yourPhoneNumber}?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+        closeModal();
+    }
+</script>
+
+</body>
+</html>
