@@ -132,6 +132,16 @@
             margin-bottom: 12px;
         }
 
+        .wedding-time {
+            font-size: 0.82rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: -6px;
+            margin-bottom: 14px;
+        }
+
         .venue-short {
             font-size: 0.85rem;
             line-height: 1.6;
@@ -401,6 +411,7 @@
 
         <h1 class="serif-heading couple-names">SHREYA &<br>UTSAV</h1>
         <p class="wedding-date">MONDAY 18TH JANUARY 2027</p>
+        <p class="wedding-time">7:00 PM ONWARDS</p>
         <p class="venue-short">
             Regenta Orkos Kolkata by Royal Orchid Hotels Limited, Kolkata, IN
         </p>
@@ -488,7 +499,7 @@
     <div class="section">
         <h2 class="serif-heading section-title">SCHEDULE</h2>
         <p class="schedule-date">18TH JANUARY 2027</p>
-        <p class="schedule-event">Wedding</p>
+        <p class="schedule-event">Wedding • 7:00 PM Onwards</p>
         <p class="schedule-location">
             Regenta Orkos Kolkata by Royal Orchid<br>Hotels Limited
         </p>
@@ -627,7 +638,7 @@
     }
 
     // 3. Live Countdown with Post-Event Handling
-    const eventStart = new Date("2027-01-18T18:00:00+05:30").getTime();
+    const eventStart = new Date("2027-01-18T19:00:00+05:30").getTime();
     const eventEnd   = new Date("2027-01-19T02:00:00+05:30").getTime();
 
     function updateWeddingTimer() {
